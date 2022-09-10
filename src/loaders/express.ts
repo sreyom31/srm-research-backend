@@ -1,11 +1,14 @@
 import express from 'express';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
+import { errorConverter, errorHandler } from '../middlewares/error';
+import ApiError from '../utils/ApiError';
 import config from '../config';
 import morgan from './morgan';
 const xss = require('xss-clean');
 const compression = require('compression');
 const cors = require('cors');
+const httpStatus = require('http-status');
 
 export default ({ app }: { app: express.Application }) => {
   if (config.env !== 'test') {
@@ -31,4 +34,10 @@ export default ({ app }: { app: express.Application }) => {
 
   // enable cors
   app.use(cors());
+
+  app.use((req, res, next) => {
+    next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+  });
+  app.use(errorConverter);
+  app.use(errorHandler);
 };
