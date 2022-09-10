@@ -6,8 +6,10 @@
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier"],
-  "rules": {
-    "lines-between-class-members": "off"
-  }
+  "plugins": ["@typescript-eslint", "prettier"]
+  // "rules": {
+  //   "lines-between-class-members": "off",
+  //   "import/newline-after-import": "off",
+  //   "@typescript-eslint/no-var-requires": "off"
+  // }
 }
