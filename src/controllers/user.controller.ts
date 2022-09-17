@@ -2,6 +2,7 @@ import httpStatus from 'http-status';
 import catchAsync from '../utils/CatchAsync';
 import pick from '../utils/pick';
 import ApiError from '../utils/ApiError';
+import { userService } from '../services';
 
 const createUser = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
