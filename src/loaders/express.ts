@@ -1,10 +1,14 @@
 import express from 'express';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
+import passport from 'passport';
 import { errorConverter, errorHandler } from '../middlewares/error';
+import authLimiter from '../middlewares/rateLimiter';
+import jwtStrategy from '../config/passport';
 import ApiError from '../utils/ApiError';
 import config from '../config';
 import morgan from './morgan';
+import routes from '../routes';
 const xss = require('xss-clean');
 const compression = require('compression');
 const cors = require('cors');
@@ -35,9 +39,24 @@ export default ({ app }: { app: express.Application }) => {
   // enable cors
   app.use(cors());
 
+  // jwt authentication
+  app.use(passport.initialize());
+  passport.use('jwt', jwtStrategy);
+
+  // limit repeated failed requests to auth endpoints
+  if (config.env === 'production') {
+    app.use('/auth', authLimiter);
+  }
+  app.use('/', routes);
+
+  // send back a 404 error for any unknown api request
   app.use((req, res, next) => {
     next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
   });
+
+  // convert error to ApiError, if needed
   app.use(errorConverter);
+
+  // handle error
   app.use(errorHandler);
 };
