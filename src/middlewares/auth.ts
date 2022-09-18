@@ -54,14 +54,12 @@ import ApiError from '../utils/ApiError';
 //     resolve();
 //   };
 
-const auth =
-  (...requiredRights) =>
-  async (req: Request, res: Response, next: NextFunction) => {
-    return new Promise((resolve, reject) => {
-      passport.authenticate('jwt', { session: false })(req, res, next);
-    })
-      .then(() => next())
-      .catch((err) => next(err));
-  };
+const auth = () => async (req: Request, res: Response, next: NextFunction) => {
+  return new Promise(() => {
+    passport.authenticate('jwt', { session: false })(req, res, next);
+  })
+    .then(() => next())
+    .catch((err) => next(err));
+};
 
 export default auth;
