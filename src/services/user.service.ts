@@ -1,6 +1,6 @@
 import httpStatus from 'http-status';
 import { User, UserUpdate } from '../shared/customTypes';
-import { UserModel } from '../models';
+import UserModel from '../models/users/user.model';
 import ApiError from '../utils/ApiError';
 
 const createUser = async (userBody: User) => {
