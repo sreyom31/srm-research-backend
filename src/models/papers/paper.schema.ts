@@ -4,6 +4,7 @@ const PaperSchema = new Schema({
   title: {
     type: String,
     required: [true, 'Title is required'],
+    unique: true,
   },
   topics: {
     type: [{ name: String }],

@@ -42,3 +42,13 @@ export type DateUpdate = {
   name?: string;
   date?: string;
 };
+
+export type Paper = {
+  title: string;
+  topics: string[];
+};
+
+export type PaperUpdate = {
+  title?: string;
+  topics?: string[];
+};

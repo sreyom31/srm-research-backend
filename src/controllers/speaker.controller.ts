@@ -2,6 +2,7 @@ import httpStatus from 'http-status';
 import catchAsync from '../utils/CatchAsync';
 import { speakerService } from '../services';
 import ApiError from '../utils/ApiError';
+import pick from '../utils/pick';
 
 const createSpeaker = catchAsync(async (req, res) => {
   const speaker = await speakerService.createSpeaker(req.body);
