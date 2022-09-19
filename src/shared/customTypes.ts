@@ -32,3 +32,13 @@ export type SpeakerUpdate = {
   dept?: string;
   country?: string;
 };
+
+export type Date = {
+  name: string;
+  date: string;
+};
+
+export type DateUpdate = {
+  name?: string;
+  date?: string;
+};

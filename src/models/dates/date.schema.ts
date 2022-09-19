@@ -5,6 +5,7 @@ const DateSchema = new Schema({
     type: String,
     required: [true, 'Name of the date field is required'],
     trim: true,
+    unique: true,
   },
   date: {
     type: Date,

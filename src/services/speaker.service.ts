@@ -1,13 +1,13 @@
 import httpStatus from 'http-status';
 import { Speaker, SpeakerUpdate } from '../shared/customTypes';
-import SpeakerModel from '../models/users/user.model';
+import SpeakerModel from '../models/speakers/speaker.model';
 import ApiError from '../utils/ApiError';
 
-const createSpeaker = async (userBody: Speaker) => {
-  if (await SpeakerModel.isEmailTaken(userBody.email)) {
+const createSpeaker = async (speakerBody: Speaker) => {
+  if (await SpeakerModel.isEmailTaken(speakerBody.email)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
-  return SpeakerModel.create(userBody);
+  return SpeakerModel.create(speakerBody);
 };
 
 const getSpeakerById = async (id: string) => SpeakerModel.findById(id);
