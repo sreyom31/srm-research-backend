@@ -8,10 +8,10 @@ const router = Router();
 
 router
   .route('/')
-  .get(validate(speakerValidation.createUser), speakerController.getSpeakers)
+  .get(validate(speakerValidation.getSpeakers), speakerController.getSpeakers)
   .post(
     auth(),
-    validate(speakerValidation.getUsers),
+    validate(speakerValidation.createSpeaker),
     speakerController.createSpeaker
   );
 
@@ -19,17 +19,17 @@ router
   .route('/:speakerId')
   .get(
     auth(),
-    validate(speakerValidation.getUser),
+    validate(speakerValidation.getSpeaker),
     speakerController.getSpeaker
   )
   .patch(
     auth(),
-    validate(speakerValidation.patchUser),
+    validate(speakerValidation.patchSpeaker),
     speakerController.updateSpeaker
   )
   .delete(
     auth(),
-    validate(speakerValidation.deleteUser),
+    validate(speakerValidation.deleteSpeaker),
     speakerController.deleteSpeaker
   );
 
