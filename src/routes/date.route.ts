@@ -13,7 +13,7 @@ router
 router
   .route('/:dateId')
   .get(auth(), validate(dateValidation.getDate), dateController.getDate)
-  .patch(auth(), validate(dateValidation.patchDate), dateController.updateDate)
+  .patch(auth(), validate(dateValidation.updateDate), dateController.updateDate)
   .delete(
     auth(),
     validate(dateValidation.deleteDate),

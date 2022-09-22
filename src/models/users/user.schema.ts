@@ -3,6 +3,7 @@ import validator from 'validator';
 import bcrypt from 'bcrypt';
 import { setLastUpdated, isPasswordMatch } from './user.methods';
 import { isEmailTaken } from './user.statics';
+import { toJSON, paginate } from '../plugins';
 
 const UserSchema = new Schema({
   name: {
@@ -43,8 +44,8 @@ const UserSchema = new Schema({
 });
 
 // add plugin that converts mongoose to json
-// UserSchema.plugin(toJson);
-// UserSchema.plugin(paginate);
+UserSchema.plugin(toJSON);
+UserSchema.plugin(paginate);
 UserSchema.methods.setLastUpdated = setLastUpdated;
 UserSchema.methods.isPasswordMatch = isPasswordMatch;
 UserSchema.statics.isEmailTaken = isEmailTaken;

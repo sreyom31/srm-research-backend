@@ -1,6 +1,6 @@
 import httpStatus from 'http-status';
 import { Request, Response } from 'express';
-import catchAsync from '../utils/catchAsync';
+import catchAsync from '../utils/CatchAsync';
 import { authService, userService, tokenService } from '../services';
 
 const register = catchAsync(async (req: Request, res: Response) => {

@@ -28,3 +28,5 @@ router
     validate(paperValidation.deletePaper),
     paperController.deletePaper
   );
+
+export default router;
