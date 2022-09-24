@@ -1,5 +1,9 @@
 import { model } from 'mongoose';
-import { ISpeaker } from './speaker.types';
+import { ISpeakerModel, ISpeakerDocument } from './speaker.types';
 import SpeakerSchema from './speaker.schema';
 
-export const SpeakerModel = model<ISpeaker>('speaker', SpeakerSchema);
+const SpeakerModel = model<ISpeakerDocument, ISpeakerModel>(
+  'speaker',
+  SpeakerSchema
+);
+export default SpeakerModel;

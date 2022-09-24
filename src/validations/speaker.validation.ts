@@ -2,15 +2,17 @@ import z from 'zod';
 import { Types } from 'mongoose';
 
 const createSpeaker = z.object({
-  body: z.object({
-    name: z.string().trim(),
-    email: z.string().email().trim(),
-    profile: z.string().trim(),
-    desc: z.string().trim(),
-    designation: z.string().trim(),
-    dept: z.string().trim(),
-    country: z.string().trim(),
-  }),
+  body: z
+    .object({
+      name: z.string().trim(),
+      email: z.string().email().trim(),
+      profile: z.string().trim(),
+      desc: z.string().trim(),
+      designation: z.string().trim(),
+      dept: z.string().trim(),
+      country: z.string().trim(),
+    })
+    .partial(),
 });
 
 const getSpeakers = z.object({

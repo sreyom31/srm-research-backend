@@ -1,5 +1,6 @@
 import { Schema } from 'mongoose';
 import validator from 'validator';
+import { isEmailTaken } from './speaker.statics';
 
 const SpeakerSchema = new Schema({
   name: {
@@ -36,4 +37,5 @@ const SpeakerSchema = new Schema({
   },
 });
 
+SpeakerSchema.statics.isEmailTaken = isEmailTaken;
 export default SpeakerSchema;

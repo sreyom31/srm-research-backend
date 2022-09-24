@@ -24,7 +24,7 @@ router
   )
   .patch(
     auth(),
-    validate(speakerValidation.patchSpeaker),
+    validate(speakerValidation.updateSpeaker),
     speakerController.updateSpeaker
   )
   .delete(

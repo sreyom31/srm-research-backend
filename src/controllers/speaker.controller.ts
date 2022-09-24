@@ -1,6 +1,6 @@
 import httpStatus from 'http-status';
 import catchAsync from '../utils/CatchAsync';
-import { speakerService } from '../services';
+import speakerService from '../services/speaker.service';
 import ApiError from '../utils/ApiError';
 import pick from '../utils/pick';
 
