@@ -7,7 +7,7 @@ const PaperSchema = new Schema({
     unique: true,
   },
   topics: {
-    type: [{ name: String }],
+    type: [{ type: String }],
   },
 });
 

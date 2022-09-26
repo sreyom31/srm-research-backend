@@ -8,7 +8,7 @@ const router = Router();
 
 router
   .route('/')
-  .get(validate(paperValidation.getPapers), paperController.getPapers)
+  .get(auth(), validate(paperValidation.getPapers), paperController.getPapers)
   .post(
     auth(),
     validate(paperValidation.createPaper),
@@ -20,7 +20,7 @@ router
   .get(auth(), validate(paperValidation.getPaper), paperController.getPaper)
   .patch(
     auth(),
-    validate(paperValidation.patchPaper),
+    validate(paperValidation.updatePaper),
     paperController.updatePaper
   )
   .delete(

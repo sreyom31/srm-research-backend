@@ -4,18 +4,12 @@ import { Types } from 'mongoose';
 const createPaper = z.object({
   body: z.object({
     title: z.string().trim(),
-    topics: z.array(
-      z.object({
-        name: z.string().trim(),
-      })
-    ),
+    topics: z.array(z.string()),
   }),
 });
 
 const getPapers = z.object({
-  query: z.object({
-    name: z.string().trim(),
-  }),
+  query: z.string(),
 });
 
 const getPaper = z.object({
@@ -42,16 +36,10 @@ const updatePaper = z.object({
   }),
   body: z.object({
     title: z.string().trim(),
-    topics: z
-      .array(
-        z.object({
-          name: z.string().trim(),
-        })
-      )
-      .refine((body) => Object.keys(body).length > 0, {
-        message: 'Need atleast one field to update',
-        path: ['Paper update'],
-      }),
+    topics: z.array(z.string()).refine((body) => Object.keys(body).length > 0, {
+      message: 'Need at least one field to update',
+      path: ['Paper update'],
+    }),
   }),
 });
 

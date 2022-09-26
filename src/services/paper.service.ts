@@ -13,7 +13,7 @@ const createPaper = async (paperBody: Paper) => {
 const getPaperById = async (id: string) => PaperModel.findById(id);
 
 const queryPapers = async () => {
-  const papers = await PaperModel.find({});
+  const papers = await PaperModel.find();
   return papers;
 };
 
