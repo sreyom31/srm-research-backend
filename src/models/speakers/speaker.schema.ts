@@ -1,5 +1,6 @@
 import { Schema } from 'mongoose';
 import validator from 'validator';
+import { paginate, toJSON } from '../plugins';
 import { isEmailTaken } from './speaker.statics';
 
 const SpeakerSchema = new Schema({
@@ -37,5 +38,7 @@ const SpeakerSchema = new Schema({
   },
 });
 
+SpeakerSchema.plugin(toJSON);
+SpeakerSchema.plugin(paginate);
 SpeakerSchema.statics.isEmailTaken = isEmailTaken;
 export default SpeakerSchema;
